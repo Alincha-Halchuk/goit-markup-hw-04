@@ -55,6 +55,7 @@ address{
 
 .header {
     border-bottom: 1px solid #e7e9fc;
+    box-shadow: 0 1px 6px 0 rgba(46, 47, 66, 0.08), 0 1px 1px 0 rgba(46, 47, 66, 0.16), 0 2px 1px 0 rgba(46, 47, 66, 0.08);
 }
 
 
@@ -99,7 +100,10 @@ address{
 
     }
     
-    .header-menu-item {}
+    .header-menu-item {
+
+    }
+ 
     
     .header-menu-link {
     font-weight: 500;
@@ -109,15 +113,31 @@ address{
     color: #2e2f42;
     padding: 24px 0;
     display: block;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1)
     }
 
-    .header-menu-link:hover {
+    .header-menu-link:hover,
+    .header-menu-link:focus,
+    .header-menu-link.link-studio {
     color: #404bbf;
     }
 
-    .header-menu-link:focus {
-    color: #404bbf;
+    
+    .header-menu-link.link-studio {
+        position: relative;
     }
+
+    .header-menu-link.link-studio::after {
+        content: '';
+        width: 100%;
+        height: 4px;
+        border-radius: 2px;
+        position: absolute;
+        left: 0;
+        bottom: -1px;
+        background-color: #404bbf;
+    }
+    
     
     .header-addres {
         font-style: normal;
@@ -132,6 +152,7 @@ address{
     
     .header-addres-item {}
     
+    
     .header-addres-link {
     color: #434455;
     font-size: 16px;
@@ -140,6 +161,7 @@ address{
     letter-spacing: 0.02em;
     display: block;
     padding: 24px 0;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1)
     }
     .header-addres-link:hover {
         color: #404bbf;
@@ -156,6 +178,12 @@ address{
 
 .solutions {
     background-color: #2E2F42;
+    background-image: linear-gradient(rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)), url(../images/people-office.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    max-width: 1440px;
+    margin: 0 auto;
     padding-top: 188px;
     padding-bottom: 188px;
     width: 100%;
@@ -196,6 +224,9 @@ address{
     margin: 0 auto;
     align-self: center;
     border: none;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.15);
+    transition-property: background-color;
+    transition-duration: 300ms;
 }
 .solution-btn:hover {
     background-color: #404bbf;
@@ -239,6 +270,19 @@ address{
 
 .features-item{
 flex-basis: calc((100% - 72px) / 4);
+}
+
+
+.item-icon {
+    border: 1px solid #8e8f99;;
+    border-radius: 4px;
+    width: 264px;
+    height: 112px;
+    background-color: #F4F4FD;
+    color: #2e2f42;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .features-subtitle {
@@ -294,10 +338,12 @@ margin-bottom: 8px;
     border-radius: 0 0 4px 4px;
     width: calc((100% - 72px) / 4);
     margin: 0;
+    box-shadow: 0 2px 1px 0 rgba(46, 47, 66, 0.08), 0 1px 1px 0 rgba(46, 47, 66, 0.16), 0 1px 6px 0 rgba(46, 47, 66, 0.08);
 }
 
 .ourteam-info-person {
-    padding: 32px 0;
+    padding: 32px 16px;
+
 }
 
 
@@ -323,6 +369,41 @@ margin-bottom: 8px;
     letter-spacing: 0.02em;
     color: #434455;
     text-align: center;
+    margin-bottom: 8px;
+}
+
+.icon-list {
+    display: flex;
+    gap: 24px;
+}
+
+.icon-item {
+    background-color: #4d5ae5;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.icon-item:hover {
+    background-color: #31d0aa; 
+}
+
+.icon-item:focus {
+    background-color: #31d0aa;
+}
+
+.icon-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon {
+    fill: #F4F4FD;
 }
 
 /* -----------------OURPORTFOLIO------------- */
@@ -358,7 +439,10 @@ margin-bottom: 8px;
 
 
 .ourportfolio-item {
+}
 
+.ourportfolio-item:hover .ourportfolio-cover-text {
+    transform: translateY(0);
 }
 
 .ourportfolio-info-container {
@@ -369,9 +453,31 @@ margin-bottom: 8px;
     border-top: none;
 }
 
+.ourportfolio-cover {
+    position: relative;
+    overflow: hidden;
+}
+
 .ourportfolio-img {
     width: 100%;
     height: auto;
+}
+
+.ourportfolio-cover-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 40px 32px 164px 32px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+    color: #f4f4fd;
+    background-color: #4d5ae5;
+    height: 100%;
+    transform: translateY(100%);
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
 }
 
 .ourportfolio-subtitle {
@@ -402,6 +508,14 @@ margin-bottom: 8px;
 }
 
 .container-footer {
+    display: flex;
+    align-items: center;
+}
+
+.container-footer-logo {
+    width: 264px;
+    height: 112px;
+    margin-right: 120px;
 
 }
 
@@ -433,4 +547,50 @@ margin-bottom: 8px;
     color: #f4f4fd;
     max-width: 264px;
     margin: 0;
+}
+
+.container-footer-media {
+    text-align: left;
+}
+
+.media-text {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+    color: #FFFFFF;
+}
+
+.media-icon-list {
+    display: flex;
+    gap: 16px;
+}
+
+.media-icon-item {
+    background-color: #4d5ae5;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.media-icon-item:hover {
+    background-color: #31d0aa;
+}
+
+.media-icon-item:focus {
+    background-color: #31d0aa;
+}
+
+.icon-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon {
+    fill: #F4F4FD;
 }
